@@ -223,8 +223,8 @@ void CatCrusher::paintPanel(int idx, juce::Graphics& g, juce::Rectangle<float> r
         const float inDb = juce::Decibels::gainToDecibels(lastIn.load(), -60.f), outDb = on ? (inDb > thr ? thr + (inDb - thr) / ratio : inDb) + mk : inDb;
         g.setColour(juce::Colours::white); g.fillEllipse(p.getX() + (juce::jlimit(-48.f, 0.f, inDb) + 48.f) / 48.f * p.getWidth() - 3.f, yOf(outDb) - 3.f, 6.f, 6.f);
         g.setColour(dim());
-        g.drawText(on ? "thr " + juce::String(thr, 0) + " dB   ratio " + juce::String(ratio, 1) + ":1" : "compressor off", (int) r.getX() + 4, (int) r.getY() + 1, (int) r.getWidth(), 11, juce::Justification::left);
-        if (on) g.drawText("makeup +" + juce::String(mk, 1) + " dB", (int) r.getX() + 4, (int) r.getY() + 13, (int) r.getWidth(), 11, juce::Justification::left);
+        g.drawText(on ? "thr " + juce::String(thr, 0) + " dB   ratio " + juce::String(ratio, 1) + ":1" : "compressor off", p.toNearestInt().withY((int) r.getY() + 1).withHeight(11), juce::Justification::centred);
+        if (on) g.drawText("makeup +" + juce::String(mk, 1) + " dB", p.toNearestInt().withY((int) r.getY() + 13).withHeight(11), juce::Justification::centred);
         g.drawText("in dB", (int) p.getRight() - 40, (int) p.getBottom() - 14, 40, 11, juce::Justification::right);
         catfx::viz::grMeter(g, grR, grShown.load());
     }
