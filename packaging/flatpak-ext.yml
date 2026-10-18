@@ -5,6 +5,8 @@ branch: '@RUNTIME@'
 runtime: org.freedesktop.Platform
 runtime-version: '@RUNTIME@'
 sdk: org.freedesktop.Sdk
+base: org.freedesktop.LinuxAudio.BaseExtension     # defines the Plugins extension point
+base-version: '@RUNTIME@'
 build-extension: true
 separate-locales: false
 appstream-compose: false
