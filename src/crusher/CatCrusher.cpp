@@ -12,7 +12,7 @@ CatCrusher::CatCrusher()
           { "comp", "Amount", " %", 0.f, 100.f, 30.f, 0.f, "Compressor amount: lowers the threshold and raises the ratio together (and adds make-up gain). More = denser and louder." },
           { "vol", "Volume", " dB", -24.f, 12.f, 0.f, 0.f, "Volume: final output level. Match it to the bypassed level when comparing." },
           { "mix", "Mix", " %", 0.f, 100.f, 100.f, 0.f, "Mix: dry/wet blend. Lower values keep the original punch (parallel crush)." } },
-        { { "type", "Type", { "Tube", "Soft Sat", "Transistor", "Tape", "Diode", "Hard Clip" }, 0, "Distortion type. Tube: warm even harmonics. Soft Sat: smooth and symmetric, great on buses. Transistor: console-style, punchy and forward. Tape: gentle and rounded. Diode: edgy and asymmetric. Hard Clip: tight, loud and aggressive." },
+        { { "type", "Type", { "Tube", "Soft Sat", "Transistor", "Tape", "Diode", "Hard Clip", "Fuzz", "RAT", "Overdrive", "Rectifier" }, 0, "Distortion type. Tube: warm even harmonics. Soft Sat: smooth and symmetric, great on buses. Transistor: console-style, punchy and forward. Tape: gentle and rounded. Diode: edgy and asymmetric. Hard Clip: tight, loud and aggressive. Fuzz: thick, gated and woolly. RAT: hard-clipped, gritty distortion pedal style. Overdrive: smooth, mid-forward tube-pedal style. Rectifier: adds a bright octave-ish edge." },
           { "don", "Distortion", { "Off", "On" }, 1, "Distortion on/off." },
           { "fon", "Filter", { "Off", "On" }, 1, "Filter on/off." },
           { "con", "Compressor", { "Off", "On" }, 1, "Compressor on/off." },
@@ -20,7 +20,7 @@ CatCrusher::CatCrusher()
 
 std::vector<catfx::PanelSpec> CatCrusher::panels() const
 {
-    return { { "Distortion", { "tube", "mech" }, { "type", "don" }, 1.f },
+    return { { "Distortion", { "tube", "mech" }, { "don", "type" }, 1.f },
              { "Filter", { "cut", "res" }, { "fon" }, 1.f },
              { "Compressor", { "comp" }, { "con", "phat" }, 1.f },
              { "Master", { "vol", "mix" }, {}, 1.f } };
@@ -54,6 +54,10 @@ float CatCrusher::distort(float x, float tube, float mech, int type)
         case 3:  y = u / std::pow(1.f + std::pow(au, 1.6f), 1.f / 1.6f); break;                      // tape: wide, rounded knee
         case 4:  y = u >= 0.f ? 1.f - std::exp(-u) : -0.8f * (1.f - std::exp(0.5f * u)); break;      // diode: exponential, uneven
         case 5:  y = u / std::pow(1.f + std::pow(au, 6.f), 1.f / 6.f); break;                        // hard clip: tight, sharp knee
+        case 6:  { const float a = std::tanh(2.f * u + 0.35f) - std::tanh(0.35f); y = a / std::pow(1.f + std::pow(std::abs(1.6f * a), 4.f), 0.25f); break; }  // fuzz: two uneven stages
+        case 7:  { const float w = u / std::sqrt(1.f + (u / 3.f) * (u / 3.f)); y = std::asinh(2.5f * w) * 0.37f; break; }                               // RAT: op-amp limit, then hard diodes
+        case 8:  y = std::asinh(1.5f * u) * 0.55f; break;                                                                                                // overdrive: soft symmetric log clip
+        case 9:  y = 0.65f * std::tanh(u) + 0.35f * std::tanh(au); break;                                                                                // rectifier: folds half the wave up
         default: y = std::tanh(u + 0.12f * tube * 0.01f) - std::tanh(0.12f * tube * 0.01f); break;   // tube: biased tanh, even harmonics
     }
     y /= (1.f + 0.18f * (tg - 1.f)) * 0.9f + 0.1f;
