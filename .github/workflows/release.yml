@@ -111,7 +111,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        runtime: ['23.08', '24.08']
+        runtime: ['24.08', '25.08']
     steps:
       - uses: actions/checkout@v4
       - name: Build the extension
@@ -132,7 +132,7 @@ jobs:
       - name: Show errors
         if: failure()
         shell: bash
-        run: tail -n 25 flatpak.log | while IFS= read -r l; do echo "::error::${l:0:300}"; done
+        run: (grep -iE "error|fail|cannot|no such" flatpak.log | grep -v "end-of-life" | tail -n 5; tail -n 5 flatpak.log) | while IFS= read -r l; do echo "::error::${l:0:300}"; done
       - uses: actions/upload-artifact@v4
         with:
           name: flatpak-${{ matrix.runtime }}
