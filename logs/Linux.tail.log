@@ -28,115 +28,44 @@
 -- Exporting juceaide
 -- Testing juceaide
 -- Finished setting up juceaide
--- Configuring done (89.7s)
--- Generating done (0.1s)
--- Build files have been written to: /home/runner/work/catcrusher-vst/catcrusher-vst/build
-[  0%] Building VST3 manifest helper for FatCat
-[  0%] Building VST3 manifest helper for CatCrusher
-[  1%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/src/CatLookAndFeel.cpp.o
-[  2%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/src/CatFrame.cpp.o
--- The CXX compiler identification is GNU 13.3.0
--- The CXX compiler identification is GNU 13.3.0
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: /usr/bin/c++ - skipped
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- Check for working CXX compiler: /usr/bin/c++ - skipped
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- Configuring done (0.2s)
+-- Configuring done (81.1s)
 -- Generating done (0.0s)
--- Build files have been written to: /home/runner/work/catcrusher-vst/catcrusher-vst/build/vst3_helpers/FatCat
+-- Build files have been written to: /home/runner/work/catcrusher-vst/catcrusher-vst/build
+[  1%] Building VST3 manifest helper for CatCrusher
+[  3%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/src/CatLookAndFeel.cpp.o
+[  4%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/src/CatFrame.cpp.o
+[  6%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_gui_basics/juce_gui_basics.cpp.o
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
 -- Configuring done (0.2s)
-gmake[3]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 -- Generating done (0.0s)
 -- Build files have been written to: /home/runner/work/catcrusher-vst/catcrusher-vst/build/vst3_helpers/CatCrusher
 gmake[3]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 [ 50%] Building CXX object CMakeFiles/vst3_helper.dir/home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_plugin_client/VST3/juce_VST3ManifestHelper.cpp.o
-[ 50%] Building CXX object CMakeFiles/vst3_helper.dir/home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_plugin_client/VST3/juce_VST3ManifestHelper.cpp.o
-[100%] Linking CXX executable vst3_helper
 [100%] Linking CXX executable vst3_helper
 [100%] Built target vst3_helper
-[  2%] Built target FatCat_vst3_helper
-[  3%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_gui_basics/juce_gui_basics.cpp.o
-[100%] Built target vst3_helper
-[  3%] Built target CatCrusher_vst3_helper
-[  4%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_gui_basics/juce_gui_basics_2.cpp.o
-[  5%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_gui_basics/juce_gui_basics_3.cpp.o
-[  6%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_gui_basics/juce_gui_basics_4.cpp.o
-[  7%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_gui_basics/juce_gui_basics_5.cpp.o
-[  8%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_graphics/juce_graphics.cpp.o
-[  9%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.o
-[ 10%] Building C object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_graphics/juce_graphics_Sheenbidi.c.o
-[ 11%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_events/juce_events.cpp.o
-[ 12%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_core/juce_core.cpp.o
-[ 13%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_core/juce_core_CompilationTime.cpp.o
-[ 14%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_data_structures/juce_data_structures.cpp.o
-[ 15%] Linking CXX static library libcat_ui.a
-[ 15%] Built target cat_ui
-[ 15%] Building CXX object CMakeFiles/CatCrusher.dir/src/common/FxBase.cpp.o
-[ 17%] Building CXX object CMakeFiles/CatCrusher.dir/src/common/FxEditor.cpp.o
-[ 17%] Building CXX object CMakeFiles/FatCat.dir/src/common/FxBase.cpp.o
-[ 18%] Building CXX object CMakeFiles/FatCat.dir/src/common/FxEditor.cpp.o
-In file included from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless.h:145,
-                 from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors/juce_audio_processors.h:64,
-                 from /home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.h:2,
-                 from /home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.cpp:1:
-/home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors_headless/processors/juce_AudioProcessor.h:292:18: warning: ‘virtual void juce::AudioProcessor::processBlock(juce::AudioBuffer<double>&, juce::MidiBuffer&)’ was hidden [-Woverloaded-virtual=]
-  292 |     virtual void processBlock (AudioBuffer<double>& buffer,
-      |                  ^~~~~~~~~~~~
-In file included from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless.h:145,
-                 from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors/juce_audio_processors.h:64,
-                 from /home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.h:2,
-                 from /home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.cpp:1:
-/home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors_headless/processors/juce_AudioProcessor.h:292:18: warning: ‘virtual void juce::AudioProcessor::processBlock(juce::AudioBuffer<double>&, juce::MidiBuffer&)’ was hidden [-Woverloaded-virtual=]
-  292 |     virtual void processBlock (AudioBuffer<double>& buffer,
-      |                  ^~~~~~~~~~~~
-/home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.h:34:10: note:   by ‘virtual void catfx::FxBase::processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&)’
-   34 |     void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
-      |          ^~~~~~~~~~~~
-/home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.h:34:10: note:   by ‘virtual void catfx::FxBase::processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&)’
-   34 |     void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
-      |          ^~~~~~~~~~~~
-In file included from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless.h:145,
-                 from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors/juce_audio_processors.h:64,
-                 from /home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.h:2,
-                 from /home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxEditor.h:2,
-                 from /home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxEditor.cpp:1:
-/home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors_headless/processors/juce_AudioProcessor.h:292:18: warning: ‘virtual void juce::AudioProcessor::processBlock(juce::AudioBuffer<double>&, juce::MidiBuffer&)’ was hidden [-Woverloaded-virtual=]
-  292 |     virtual void processBlock (AudioBuffer<double>& buffer,
-      |                  ^~~~~~~~~~~~
-/home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.h:34:10: note:   by ‘virtual void catfx::FxBase::processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&)’
-   34 |     void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
-      |          ^~~~~~~~~~~~
-In file included from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless.h:145,
-                 from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors/juce_audio_processors.h:64,
-                 from /home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.h:2,
-                 from /home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxEditor.h:2,
-                 from /home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxEditor.cpp:1:
-/home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors_headless/processors/juce_AudioProcessor.h:292:18: warning: ‘virtual void juce::AudioProcessor::processBlock(juce::AudioBuffer<double>&, juce::MidiBuffer&)’ was hidden [-Woverloaded-virtual=]
-  292 |     virtual void processBlock (AudioBuffer<double>& buffer,
-      |                  ^~~~~~~~~~~~
-/home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.h:34:10: note:   by ‘virtual void catfx::FxBase::processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&)’
-   34 |     void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
-      |          ^~~~~~~~~~~~
-[ 19%] Building CXX object CMakeFiles/CatCrusher.dir/src/Plugins.cpp.o
-[ 20%] Building CXX object CMakeFiles/CatCrusher.dir/src/crusher/CatCrusher.cpp.o
-[ 21%] Building CXX object CMakeFiles/FatCat.dir/src/PluginsFat.cpp.o
-[ 22%] Building CXX object CMakeFiles/FatCat.dir/src/fatcat/FatCat.cpp.o
-In file included from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless.h:145,
-                 from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors/juce_audio_processors.h:64,
-                 from /home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.h:2,
-                 from /home/runner/work/catcrusher-vst/catcrusher-vst/src/Plugins.cpp:2:
-/home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors_headless/processors/juce_AudioProcessor.h:292:18: warning: ‘virtual void juce::AudioProcessor::processBlock(juce::AudioBuffer<double>&, juce::MidiBuffer&)’ was hidden [-Woverloaded-virtual=]
-  292 |     virtual void processBlock (AudioBuffer<double>& buffer,
-      |                  ^~~~~~~~~~~~
-/home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.h:34:10: note:   by ‘virtual void catfx::FxBase::processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&)’
-   34 |     void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
-      |          ^~~~~~~~~~~~
+[  6%] Built target CatCrusher_vst3_helper
+[  8%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_gui_basics/juce_gui_basics_2.cpp.o
+[  9%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_gui_basics/juce_gui_basics_3.cpp.o
+[ 11%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_gui_basics/juce_gui_basics_4.cpp.o
+[ 13%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_gui_basics/juce_gui_basics_5.cpp.o
+[ 14%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_graphics/juce_graphics.cpp.o
+[ 16%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.o
+[ 18%] Building C object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_graphics/juce_graphics_Sheenbidi.c.o
+[ 19%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_events/juce_events.cpp.o
+[ 21%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_core/juce_core.cpp.o
+[ 22%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_core/juce_core_CompilationTime.cpp.o
+[ 24%] Building CXX object _deps/cat_ui-build/CMakeFiles/cat_ui.dir/__/juce-src/modules/juce_data_structures/juce_data_structures.cpp.o
+[ 26%] Linking CXX static library libcat_ui.a
+[ 26%] Built target cat_ui
+[ 27%] Building CXX object CMakeFiles/CatCrusher.dir/src/common/FxBase.cpp.o
+[ 29%] Building CXX object CMakeFiles/CatCrusher.dir/src/common/FxEditor.cpp.o
+[ 31%] Building CXX object CMakeFiles/CatCrusher.dir/src/Plugins.cpp.o
+[ 32%] Building CXX object CMakeFiles/CatCrusher.dir/src/crusher/CatCrusher.cpp.o
 In file included from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless.h:145,
                  from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors/juce_audio_processors.h:64,
                  from /home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.h:2,
@@ -145,119 +74,150 @@ In file included from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_dep
 /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors_headless/processors/juce_AudioProcessor.h:292:18: warning: ‘virtual void juce::AudioProcessor::processBlock(juce::AudioBuffer<double>&, juce::MidiBuffer&)’ was hidden [-Woverloaded-virtual=]
   292 |     virtual void processBlock (AudioBuffer<double>& buffer,
       |                  ^~~~~~~~~~~~
-/home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.h:34:10: note:   by ‘virtual void catfx::FxBase::processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&)’
-   34 |     void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
+In file included from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless.h:145,
+                 from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors/juce_audio_processors.h:64,
+                 from /home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.h:2,
+                 from /home/runner/work/catcrusher-vst/catcrusher-vst/src/Plugins.cpp:2:
+/home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors_headless/processors/juce_AudioProcessor.h:292:18: warning: ‘virtual void juce::AudioProcessor::processBlock(juce::AudioBuffer<double>&, juce::MidiBuffer&)’ was hidden [-Woverloaded-virtual=]
+  292 |     virtual void processBlock (AudioBuffer<double>& buffer,
+      |                  ^~~~~~~~~~~~
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.h:41:10: note:   by ‘virtual void catfx::FxBase::processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&)’
+   41 |     void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
+      |          ^~~~~~~~~~~~
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.h:41:10: note:   by ‘virtual void catfx::FxBase::processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&)’
+   41 |     void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
       |          ^~~~~~~~~~~~
 In file included from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless.h:145,
                  from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors/juce_audio_processors.h:64,
                  from /home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.h:2,
-                 from /home/runner/work/catcrusher-vst/catcrusher-vst/src/PluginsFat.cpp:2:
+                 from /home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxEditor.h:2,
+                 from /home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxEditor.cpp:1:
 /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors_headless/processors/juce_AudioProcessor.h:292:18: warning: ‘virtual void juce::AudioProcessor::processBlock(juce::AudioBuffer<double>&, juce::MidiBuffer&)’ was hidden [-Woverloaded-virtual=]
   292 |     virtual void processBlock (AudioBuffer<double>& buffer,
       |                  ^~~~~~~~~~~~
-/home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.h:34:10: note:   by ‘virtual void catfx::FxBase::processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&)’
-   34 |     void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.h:41:10: note:   by ‘virtual void catfx::FxBase::processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&)’
+   41 |     void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
       |          ^~~~~~~~~~~~
 In file included from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless.h:145,
                  from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors/juce_audio_processors.h:64,
                  from /home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.h:2,
-                 from /home/runner/work/catcrusher-vst/catcrusher-vst/src/fatcat/FatCat.h:2,
-                 from /home/runner/work/catcrusher-vst/catcrusher-vst/src/fatcat/FatCat.cpp:1:
+                 from /home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.cpp:1:
 /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors_headless/processors/juce_AudioProcessor.h:292:18: warning: ‘virtual void juce::AudioProcessor::processBlock(juce::AudioBuffer<double>&, juce::MidiBuffer&)’ was hidden [-Woverloaded-virtual=]
   292 |     virtual void processBlock (AudioBuffer<double>& buffer,
       |                  ^~~~~~~~~~~~
-/home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.h:34:10: note:   by ‘virtual void catfx::FxBase::processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&)’
-   34 |     void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.h:41:10: note:   by ‘virtual void catfx::FxBase::processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&)’
+   41 |     void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
       |          ^~~~~~~~~~~~
-[ 23%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_audio_processors/juce_audio_processors.cpp.o
-[ 24%] Building CXX object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_audio_processors/juce_audio_processors.cpp.o
-[ 25%] Building CXX object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_gui_extra/juce_gui_extra.cpp.o
-[ 26%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_gui_extra/juce_gui_extra.cpp.o
-[ 27%] Building CXX object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics.cpp.o
-[ 28%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics.cpp.o
-[ 29%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics_2.cpp.o
-[ 30%] Building CXX object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics_2.cpp.o
-[ 31%] Building CXX object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics_3.cpp.o
-[ 32%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics_3.cpp.o
-[ 33%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics_4.cpp.o
-[ 34%] Building CXX object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics_4.cpp.o
-[ 35%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics_5.cpp.o
-[ 36%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_graphics/juce_graphics.cpp.o
-[ 37%] Building CXX object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics_5.cpp.o
-[ 38%] Building CXX object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_graphics/juce_graphics.cpp.o
-[ 39%] Building CXX object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.o
-[ 40%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.o
-[ 41%] Building C object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_graphics/juce_graphics_Sheenbidi.c.o
-[ 42%] Building CXX object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_events/juce_events.cpp.o
-[ 42%] Building CXX object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_core/juce_core.cpp.o
-[ 43%] Building C object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_graphics/juce_graphics_Sheenbidi.c.o
-[ 44%] Building CXX object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_core/juce_core_CompilationTime.cpp.o
-[ 45%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_events/juce_events.cpp.o
-[ 45%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_core/juce_core.cpp.o
-[ 46%] Building CXX object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_data_structures/juce_data_structures.cpp.o
-[ 47%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_core/juce_core_CompilationTime.cpp.o
-[ 48%] Building CXX object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.o
-[ 49%] Building CXX object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.o
-[ 50%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_data_structures/juce_data_structures.cpp.o
-[ 51%] Building CXX object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.o
-[ 52%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.o
-[ 53%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.o
-[ 54%] Building CXX object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_audio_basics/juce_audio_basics.cpp.o
-[ 55%] Building CXX object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_audio_utils/juce_audio_utils.cpp.o
-[ 56%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.o
-[ 57%] Building CXX object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_audio_formats/juce_audio_formats.cpp.o
-[ 58%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_audio_basics/juce_audio_basics.cpp.o
-[ 59%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_audio_utils/juce_audio_utils.cpp.o
-[ 60%] Building CXX object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_audio_devices/juce_audio_devices.cpp.o
-[ 61%] Building CXX object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_dsp/juce_dsp.cpp.o
-[ 62%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_audio_formats/juce_audio_formats.cpp.o
-[ 63%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_audio_devices/juce_audio_devices.cpp.o
-[ 64%] Building CXX object CMakeFiles/FatCat.dir/_deps/juce-src/modules/juce_dsp/juce_dsp.cpp.o
-[ 65%] Linking CXX static library "CatCrusher_artefacts/Release/libCat Crusher_SharedCode.a"
-[ 65%] Built target CatCrusher
-[ 66%] Building CXX object CMakeFiles/CatCrusher_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX.cpp.o
-[ 67%] Building CXX object CMakeFiles/CatCrusher_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX_utils.cpp.o
-[ 68%] Building CXX object CMakeFiles/CatCrusher_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_ARA.cpp.o
-[ 68%] Building CXX object CMakeFiles/CatCrusher_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_LV2.cpp.o
-[ 69%] Building CXX object CMakeFiles/CatCrusher_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_Standalone.cpp.o
-[ 70%] Building CXX object CMakeFiles/CatCrusher_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_Unity.cpp.o
-[ 71%] Building CXX object CMakeFiles/CatCrusher_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST2.cpp.o
-[ 72%] Building CXX object CMakeFiles/CatCrusher_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST3.cpp.o
-[ 73%] Linking CXX executable "CatCrusher_artefacts/Release/Standalone/Cat Crusher"
-[ 74%] Building CXX object CMakeFiles/CatCrusher_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX.cpp.o
-[ 75%] Building CXX object CMakeFiles/CatCrusher_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX_utils.cpp.o
-[ 76%] Building CXX object CMakeFiles/CatCrusher_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_ARA.cpp.o
-[ 77%] Building CXX object CMakeFiles/CatCrusher_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_LV2.cpp.o
-[ 78%] Building CXX object CMakeFiles/CatCrusher_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_Standalone.cpp.o
-[ 79%] Building CXX object CMakeFiles/CatCrusher_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_Unity.cpp.o
-[ 80%] Building CXX object CMakeFiles/CatCrusher_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST2.cpp.o
-[ 81%] Building CXX object CMakeFiles/CatCrusher_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST3.cpp.o
-[ 81%] Built target CatCrusher_Standalone
-[ 82%] Linking CXX static library "FatCat_artefacts/Release/libFat Cat_SharedCode.a"
-[ 82%] Built target FatCat
-[ 83%] Building CXX object CMakeFiles/FatCat_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX.cpp.o
-[ 84%] Building CXX object CMakeFiles/FatCat_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX_utils.cpp.o
-[ 85%] Building CXX object CMakeFiles/FatCat_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX.cpp.o
-[ 87%] Building CXX object CMakeFiles/FatCat_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_ARA.cpp.o
-[ 87%] Building CXX object CMakeFiles/FatCat_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX_utils.cpp.o
-[ 88%] Building CXX object CMakeFiles/FatCat_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_ARA.cpp.o
-[ 88%] Building CXX object CMakeFiles/FatCat_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_LV2.cpp.o
-[ 89%] Building CXX object CMakeFiles/FatCat_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_LV2.cpp.o
-[ 90%] Building CXX object CMakeFiles/FatCat_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_Standalone.cpp.o
-[ 91%] Building CXX object CMakeFiles/FatCat_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_Standalone.cpp.o
-[ 92%] Building CXX object CMakeFiles/FatCat_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_Unity.cpp.o
-[ 93%] Building CXX object CMakeFiles/FatCat_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_Unity.cpp.o
-[ 94%] Building CXX object CMakeFiles/FatCat_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST2.cpp.o
-[ 95%] Building CXX object CMakeFiles/FatCat_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST2.cpp.o
-[ 96%] Building CXX object CMakeFiles/FatCat_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST3.cpp.o
-[ 97%] Building CXX object CMakeFiles/FatCat_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST3.cpp.o
-[ 98%] Linking CXX executable "FatCat_artefacts/Release/Standalone/Fat Cat"
-[ 98%] Built target FatCat_Standalone
-[ 99%] Linking CXX shared module "CatCrusher_artefacts/Release/VST3/Cat Crusher.vst3/Contents/x86_64-linux/Cat Crusher.so"
-removing moduleinfo.json
-creating /home/runner/work/catcrusher-vst/catcrusher-vst/build/CatCrusher_artefacts/Release/VST3/Cat Crusher.vst3/Contents/Resources/moduleinfo.json
-[ 99%] Built target CatCrusher_VST3
-[100%] Linking CXX shared module "FatCat_artefacts/Release/VST3/Fat Cat.vst3/Contents/x86_64-linux/Fat Cat.so"
-removing moduleinfo.json
-creating /home/runner/work/catcrusher-vst/catcrusher-vst/build/FatCat_artefacts/Release/VST3/Fat Cat.vst3/Contents/Resources/moduleinfo.json
-[100%] Built target FatCat_VST3
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp: In member function ‘virtual void CatCrusher::paintPanel(int, juce::Graphics&, juce::Rectangle<float>)’:
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp:160:28: error: ‘viz’ is not a namespace-name
+  160 |     using namespace catfx::viz;
+      |                            ^~~
+In file included from /home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxEditor.h:3:
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/common/Viz.h: In function ‘void catfx::viz::grMeter(juce::Graphics&, juce::Rectangle<float>, float, float)’:
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/common/Viz.h:89:45: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   89 |         g.setColour(dim()); g.drawText(tick == 0.f ? "0" : "-" + juce::String((int) tick), (int) track.getRight() + 4, (int) y - 5, 24, 10, juce::Justification::left);
+      |                                        ~~~~~^~~~~~
+In file included from /home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxEditor.h:3,
+                 from /home/runner/work/catcrusher-vst/catcrusher-vst/src/common/FxBase.cpp:2:
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/common/Viz.h: In function ‘void catfx::viz::grMeter(juce::Graphics&, juce::Rectangle<float>, float, float)’:
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/common/Viz.h:89:45: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   89 |         g.setColour(dim()); g.drawText(tick == 0.f ? "0" : "-" + juce::String((int) tick), (int) track.getRight() + 4, (int) y - 5, 24, 10, juce::Justification::left);
+      |                                        ~~~~~^~~~~~
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp:166:21: error: ‘grid’ was not declared in this scope
+  166 |         g.setColour(grid()); g.drawRect(p); g.drawLine(p.getX(), p.getCentreY(), p.getRight(), p.getCentreY()); g.drawLine(p.getCentreX(), p.getY(), p.getCentreX(), p.getBottom());
+      |                     ^~~~
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp:174:21: error: ‘accent’ was not declared in this scope; did you mean ‘acct’?
+  174 |         g.setColour(accent()); g.strokePath(path, juce::PathStrokeType(2.f));
+      |                     ^~~~~~
+      |                     acct
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp:177:21: error: ‘dim’ was not declared in this scope; did you mean ‘fdim’?
+  177 |         g.setColour(dim()); g.drawText("input level", p.toNearestInt().withY((int) p.getBottom() + 1).withHeight(11), juce::Justification::centred);
+      |                     ^~~
+      |                     fdim
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp:186:21: error: ‘bg’ was not declared in this scope; did you mean ‘g’?
+  186 |         g.setColour(bg().brighter(0.04f)); g.fillRect(p);
+      |                     ^~
+      |                     g
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp:187:9: error: ‘dbAxis’ was not declared in this scope
+  187 |         dbAxis(g, p, -36.f, 18.f, 12.f); freqAxis(g, p);
+      |         ^~~~~~
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp:187:42: error: ‘freqAxis’ was not declared in this scope
+  187 |         dbAxis(g, p, -36.f, 18.f, 12.f); freqAxis(g, p);
+      |                                          ^~~~~~~~
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp:198:21: error: ‘green’ was not declared in this scope; did you mean ‘juce::Colours::green’?
+  198 |         g.setColour(green()); g.strokePath(f, juce::PathStrokeType(2.f));
+      |                     ^~~~~
+      |                     juce::Colours::green
+In file included from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_graphics/juce_graphics.h:125,
+                 from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics.h:68,
+                 from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_gui_extra/juce_gui_extra.h:68,
+                 from /home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_audio_processors/juce_audio_processors.h:65:
+/home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_graphics/colour/juce_Colours.h:99:18: note: ‘juce::Colours::green’ declared here
+   99 |     const Colour green                { 0xff008000 };
+      |                  ^~~~~
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp:199:21: error: ‘dim’ was not declared in this scope; did you mean ‘fdim’?
+  199 |         g.setColour(dim()); g.drawText("cutoff " + juce::String((int) fc) + " Hz", (int) r.getRight() - 120, (int) r.getY() + 1, 116, 11, juce::Justification::right);
+      |                     ^~~
+      |                     fdim
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp:207:21: error: ‘bg’ was not declared in this scope; did you mean ‘g’?
+  207 |         g.setColour(bg().brighter(0.04f)); g.fillRect(p);
+      |                     ^~
+      |                     g
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp:208:9: error: ‘dbAxis’ was not declared in this scope
+  208 |         dbAxis(g, p, -48.f, 12.f, 12.f, false);
+      |         ^~~~~~
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp:210:84: error: ‘grid’ was not declared in this scope
+  210 |         { const float x = p.getX() + (v + 48.f) / 48.f * p.getWidth(); g.setColour(grid()); g.drawVerticalLine((int) x, p.getY(), p.getBottom()); g.setColour(dim()); g.drawText(juce::String((int) v), (int) x - 14, (int) p.getBottom() + 1, 28, 11, juce::Justification::centred); }
+      |                                                                                    ^~~~
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp:210:159: error: ‘dim’ was not declared in this scope; did you mean ‘fdim’?
+  210 |         { const float x = p.getX() + (v + 48.f) / 48.f * p.getWidth(); g.setColour(grid()); g.drawVerticalLine((int) x, p.getY(), p.getBottom()); g.setColour(dim()); g.drawText(juce::String((int) v), (int) x - 14, (int) p.getBottom() + 1, 28, 11, juce::Justification::centred); }
+      |                                                                                                                                                               ^~~
+      |                                                                                                                                                               fdim
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp:212:21: error: ‘dim’ was not declared in this scope; did you mean ‘fdim’?
+  212 |         g.setColour(dim().withAlpha(0.6f)); g.drawLine(p.getX(), yOf(-48.f), p.getRight(), yOf(0.f), 1.f);
+      |                     ^~~
+      |                     fdim
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp:220:21: error: ‘accent’ was not declared in this scope; did you mean ‘acct’?
+  220 |         g.setColour(accent()); g.strokePath(c, juce::PathStrokeType(2.f));
+      |                     ^~~~~~
+      |                     acct
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp:221:95: error: ‘red’ was not declared in this scope; did you mean ‘juce::Colours::red’?
+  221 |         if (on) { const float tx = p.getX() + (thr + 48.f) / 48.f * p.getWidth(); g.setColour(red().withAlpha(0.7f)); g.drawVerticalLine((int) tx, p.getY(), p.getBottom()); }
+      |                                                                                               ^~~
+      |                                                                                               juce::Colours::red
+/home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_graphics/colour/juce_Colours.h:162:18: note: ‘juce::Colours::red’ declared here
+  162 |     const Colour red                  { 0xffff0000 };
+      |                  ^~~
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp:226:16: error: expression cannot be used as a function
+  226 |         grMeter(g, grR, grShown.load());
+      |         ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp:234:9: error: ‘meter’ was not declared in this scope; did you mean ‘grMeter’?
+  234 |         meter(g, left, inLevel.load(), "IN dB");
+      |         ^~~~~
+      |         grMeter
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp:236:21: error: ‘grid’ was not declared in this scope
+  236 |         g.setColour(grid()); g.fillRect(bottom.withHeight(10.f).withY(bottom.getY() + 14.f));
+      |                     ^~~~
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp:237:21: error: ‘blue’ was not declared in this scope; did you mean ‘juce::Colours::blue’?
+  237 |         g.setColour(blue().withAlpha(0.8f)); g.fillRect(bottom.withHeight(10.f).withY(bottom.getY() + 14.f).withWidth(bottom.getWidth() * (1.f - mix * 0.01f)));
+      |                     ^~~~
+      |                     juce::Colours::blue
+/home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_graphics/colour/juce_Colours.h:57:18: note: ‘juce::Colours::blue’ declared here
+   57 |     const Colour blue                 { 0xff0000ff };
+      |                  ^~~~
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp:238:21: error: ‘green’ was not declared in this scope; did you mean ‘juce::Colours::green’?
+  238 |         g.setColour(green()); g.fillRect(bottom.withHeight(10.f).withY(bottom.getY() + 14.f).withTrimmedLeft(bottom.getWidth() * (1.f - mix * 0.01f)));
+      |                     ^~~~~
+      |                     juce::Colours::green
+/home/runner/work/catcrusher-vst/catcrusher-vst/build/_deps/juce-src/modules/juce_graphics/colour/juce_Colours.h:99:18: note: ‘juce::Colours::green’ declared here
+   99 |     const Colour green                { 0xff008000 };
+      |                  ^~~~~
+/home/runner/work/catcrusher-vst/catcrusher-vst/src/crusher/CatCrusher.cpp:239:21: error: ‘dim’ was not declared in this scope; did you mean ‘fdim’?
+  239 |         g.setColour(dim()); g.setFont(juce::FontOptions(10.f));
+      |                     ^~~
+      |                     fdim
+[ 34%] Building CXX object CMakeFiles/CatCrusher.dir/_deps/juce-src/modules/juce_audio_processors/juce_audio_processors.cpp.o
+gmake[2]: *** [CMakeFiles/CatCrusher.dir/build.make:121: CMakeFiles/CatCrusher.dir/src/crusher/CatCrusher.cpp.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+gmake[1]: *** [CMakeFiles/Makefile2:201: CMakeFiles/CatCrusher.dir/all] Error 2
+gmake: *** [Makefile:136: all] Error 2
