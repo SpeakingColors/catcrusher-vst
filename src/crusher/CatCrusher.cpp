@@ -204,7 +204,7 @@ void CatCrusher::paintPanel(int idx, juce::Graphics& g, juce::Rectangle<float> r
         const float am = get("comp") / 100.f, thr = -am * 30.f, ratio = 1.f + am * 7.f, mk = am * (get("phat") > 0.5f ? 9.f : 6.f);
         const bool on = get("con") > 0.5f;
         auto grR = r.removeFromRight(46.f).reduced(2.f, 6.f);
-        auto p = r.withTrimmedLeft(34.f).withTrimmedRight(6.f).withTrimmedTop(16.f).withTrimmedBottom(14.f);
+        auto p = r.withTrimmedLeft(34.f).withTrimmedRight(6.f).withTrimmedTop(34.f).withTrimmedBottom(14.f);
         g.setColour(bg().brighter(0.04f)); g.fillRect(p);
         dbAxis(g, p, -48.f, 12.f, 12.f, false);
         for (float v : { -48.f, -36.f, -24.f, -12.f, 0.f })
@@ -222,7 +222,9 @@ void CatCrusher::paintPanel(int idx, juce::Graphics& g, juce::Rectangle<float> r
         if (on) { const float tx = p.getX() + (thr + 48.f) / 48.f * p.getWidth(); g.setColour(red().withAlpha(0.7f)); g.drawVerticalLine((int) tx, p.getY(), p.getBottom()); }
         const float inDb = juce::Decibels::gainToDecibels(lastIn.load(), -60.f), outDb = on ? (inDb > thr ? thr + (inDb - thr) / ratio : inDb) + mk : inDb;
         g.setColour(juce::Colours::white); g.fillEllipse(p.getX() + (juce::jlimit(-48.f, 0.f, inDb) + 48.f) / 48.f * p.getWidth() - 3.f, yOf(outDb) - 3.f, 6.f, 6.f);
-        g.setColour(dim()); g.drawText(on ? "thr " + juce::String(thr, 0) + " dB   ratio " + juce::String(ratio, 1) + ":1   makeup +" + juce::String(mk, 1) + " dB" : "compressor off", (int) r.getX() + 4, (int) r.getY() + 1, (int) r.getWidth(), 11, juce::Justification::left);
+        g.setColour(dim());
+        g.drawText(on ? "thr " + juce::String(thr, 0) + " dB   ratio " + juce::String(ratio, 1) + ":1" : "compressor off", (int) r.getX() + 4, (int) r.getY() + 1, (int) r.getWidth(), 11, juce::Justification::left);
+        if (on) g.drawText("makeup +" + juce::String(mk, 1) + " dB", (int) r.getX() + 4, (int) r.getY() + 13, (int) r.getWidth(), 11, juce::Justification::left);
         g.drawText("in dB", (int) p.getRight() - 40, (int) p.getBottom() - 14, 40, 11, juce::Justification::right);
         catfx::viz::grMeter(g, grR, grShown.load());
     }
