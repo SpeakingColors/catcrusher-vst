@@ -1,4 +1,5 @@
 #include "CatCrusher.h"
+#include "../common/Viz.h"
 
 using namespace catfx;
 
