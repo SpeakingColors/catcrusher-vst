@@ -1,0 +1,15 @@
+# Intro
+Cat Crusher is a distortion, filter and compressor in one plugin. It makes drums, bass and leads thicker, grittier and louder: choose one of ten distortion types, add a hard digital crunch with Mech, tame the highs with a resonant 24 dB filter, then glue everything with a one-knob compressor. Built for dance, house, UK hardcore and hardstyle.
+
+# Quick start
+- Pick the preset closest to your sound (Fat Bass, Hardstyle Kick Crunch, UK Hardcore Stab, Gritty Drums).
+- Set Type first, then raise Drive until it sounds right; the Distortion curve shows the shape you are using.
+- Use Cutoff to remove harsh highs, Amount for density, and Mix for parallel crush.
+- Compare with the plugin bypassed and set Volume so both are equally loud.
+
+# Recommendations
+- Kick: Type Diode or Transistor, Drive 60 to 80, Phat mode on, Mix 80 to 90 to keep the click.
+- Bass: Type Transistor, Drive 50, Cutoff 4 kHz, Phat mode on; keep Mech low so the sub stays clean.
+- Lead or stab: Mech 30 to 60 and Resonance 30 to 50 for screech; roll Cutoff down if it gets harsh.
+- Drum bus: Type Tape, Drive 20 to 30, Amount 25 to 40, Mix 100 for glue or 60 to 70 for parallel punch.
+- If it sounds louder but worse, lower Volume: loudness fools the ear.
