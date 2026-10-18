@@ -10,8 +10,8 @@ public:
     CatCrusher();
     void prepare(double sr, int maxBlock) override;
     void process(juce::AudioBuffer<float>&, const juce::AudioBuffer<float>*) override;
-    void paintViz(juce::Graphics&, juce::Rectangle<float>) override;
-    juce::String vizCaption() const override { return "Distortion curve and filter response (live)"; }
+    std::vector<catfx::PanelSpec> panels() const override;
+    void paintPanel(int index, juce::Graphics&, juce::Rectangle<float>) override;
     std::vector<Preset> presets() const override;
     juce::StringArray randomExclude() const override { return { "vol", "don", "fon", "con" }; }
     static float distort(float x, float tube, float mech);

@@ -4,17 +4,25 @@ using namespace catfx;
 
 CatCrusher::CatCrusher()
     : FxBase("Cat Crusher",
-        { { "tube", "Tube", " %", 0.f, 100.f, 30.f },
-          { "mech", "Mech", " %", 0.f, 100.f, 0.f },
-          { "cut", "Cutoff", " Hz", 40.f, 20000.f, 20000.f, 1500.f },
-          { "res", "Res", " %", 0.f, 100.f, 10.f },
-          { "comp", "Amount", " %", 0.f, 100.f, 30.f },
-          { "vol", "Volume", " dB", -24.f, 12.f, 0.f },
-          { "mix", "Mix", " %", 0.f, 100.f, 100.f } },
-        { { "don", "Distortion", { "Off", "On" }, 1 },
-          { "fon", "Filter", { "Off", "On" }, 1 },
-          { "con", "Compressor", { "Off", "On" }, 1 },
-          { "phat", "Phat mode", { "Off", "On" }, 0 } }) {}
+        { { "tube", "Tube", " %", 0.f, 100.f, 30.f, 0.f, "Tube: warm, smooth saturation with even harmonics. Higher = more drive and warmth." },
+          { "mech", "Mech", " %", 0.f, 100.f, 0.f, 0.f, "Mech: harder, more aggressive digital-style crunch (folds and clips the wave). 0 = off." },
+          { "cut", "Cutoff", " Hz", 40.f, 20000.f, 20000.f, 1500.f, "Cutoff: frequency of the 24 dB low-pass filter. Rolls off the harsh highs that distortion creates." },
+          { "res", "Res", " %", 0.f, 100.f, 10.f, 0.f, "Resonance: boosts the frequencies right at the cutoff for a vocal or squelchy edge." },
+          { "comp", "Amount", " %", 0.f, 100.f, 30.f, 0.f, "Compressor amount: lowers the threshold and raises the ratio together (and adds make-up gain). More = denser and louder." },
+          { "vol", "Volume", " dB", -24.f, 12.f, 0.f, 0.f, "Volume: final output level. Match it to the bypassed level when comparing." },
+          { "mix", "Mix", " %", 0.f, 100.f, 100.f, 0.f, "Mix: dry/wet blend. Lower values keep the original punch (parallel crush)." } },
+        { { "don", "Distortion", { "Off", "On" }, 1, "Distortion on/off." },
+          { "fon", "Filter", { "Off", "On" }, 1, "Filter on/off." },
+          { "con", "Compressor", { "Off", "On" }, 1, "Compressor on/off." },
+          { "phat", "Phat mode", { "Off", "On" }, 0, "Phat mode: adds low-end weight before the compressor, a slower release and a soft ceiling. Great on kicks and bass." } }) {}
+
+std::vector<catfx::PanelSpec> CatCrusher::panels() const
+{
+    return { { "Distortion", { "tube", "mech" }, { "don" }, 1.f },
+             { "Filter", { "cut", "res" }, { "fon" }, 1.f },
+             { "Compressor", { "comp" }, { "con", "phat" }, 1.f },
+             { "Master", { "vol", "mix" }, {}, 1.f } };
+}
 
 std::vector<FxBase::Preset> CatCrusher::presets() const
 {
@@ -147,44 +155,90 @@ void CatCrusher::process(juce::AudioBuffer<float>& buf, const juce::AudioBuffer<
     }
 }
 
-void CatCrusher::paintViz(juce::Graphics& g, juce::Rectangle<float> r)
+void CatCrusher::paintPanel(int idx, juce::Graphics& g, juce::Rectangle<float> r)
 {
-    auto left = r.removeFromLeft(r.getWidth() * 0.40f).reduced(4.f, 18.f);
-    r.removeFromLeft(12.f);
-    auto right = r.withTrimmedRight(20.f).reduced(4.f, 18.f);
-    auto grBar = right.removeFromRight(10.f); right.removeFromRight(8.f);
-    const float tube = get("tube"), mech = get("mech");
-    const bool dOn = get("don") > 0.5f;
-    g.setColour(juce::Colour(0xff33403f)); g.drawRect(left); g.drawLine(left.getX(), left.getCentreY(), left.getRight(), left.getCentreY());
-    g.drawLine(left.getCentreX(), left.getY(), left.getCentreX(), left.getBottom());
-    juce::Path p;
-    for (int i = 0; i <= 200; ++i)
+    using namespace catfx::viz;
+    g.setFont(juce::FontOptions(11.f));
+    if (idx == 0)       // distortion curve
     {
-        const float x = -1.f + (float) i / 100.f, y = juce::jlimit(-1.2f, 1.2f, dOn ? distort(x, tube, mech) : x);
-        const float px = left.getX() + (x + 1.f) * 0.5f * left.getWidth(), py = left.getCentreY() - y / 1.2f * 0.5f * left.getHeight();
-        i ? p.lineTo(px, py) : p.startNewSubPath(px, py);
+        const float tube = get("tube"), mech = get("mech"); const bool on = get("don") > 0.5f;
+        auto p = r.withTrimmedLeft(8.f).reduced(10.f, 14.f); p.removeFromBottom(10.f);
+        g.setColour(grid()); g.drawRect(p); g.drawLine(p.getX(), p.getCentreY(), p.getRight(), p.getCentreY()); g.drawLine(p.getCentreX(), p.getY(), p.getCentreX(), p.getBottom());
+        juce::Path path;
+        for (int i = 0; i <= 200; ++i)
+        {
+            const float x = -1.f + (float) i / 100.f, y = juce::jlimit(-1.2f, 1.2f, on ? distort(x, tube, mech) : x);
+            const float px = p.getX() + (x + 1.f) * 0.5f * p.getWidth(), py = p.getCentreY() - y / 1.2f * 0.5f * p.getHeight();
+            i ? path.lineTo(px, py) : path.startNewSubPath(px, py);
+        }
+        g.setColour(accent()); g.strokePath(path, juce::PathStrokeType(2.f));
+        const float lv = juce::jlimit(0.f, 1.f, lastIn.load()), yy = juce::jlimit(-1.2f, 1.2f, on ? distort(lv, tube, mech) : lv);
+        g.setColour(juce::Colours::white); g.fillEllipse(p.getX() + (lv + 1.f) * 0.5f * p.getWidth() - 3.f, p.getCentreY() - yy / 1.2f * 0.5f * p.getHeight() - 3.f, 6.f, 6.f);
+        g.setColour(dim()); g.drawText("input level", p.toNearestInt().withY((int) p.getBottom() + 1).withHeight(11), juce::Justification::centred);
+        g.drawText("-1", (int) p.getX(), (int) p.getBottom() + 1, 20, 11, juce::Justification::left); g.drawText("+1", (int) p.getRight() - 20, (int) p.getBottom() + 1, 20, 11, juce::Justification::right);
+        g.drawText("output", (int) r.getX() + 2, (int) r.getY() + 1, 60, 11, juce::Justification::left);
+        g.drawText("gain x" + juce::String(1.f + tube * 0.24f, 1), (int) r.getRight() - 80, (int) r.getY() + 1, 76, 11, juce::Justification::right);
     }
-    g.setColour(juce::Colour(0xffe8a33d)); g.strokePath(p, juce::PathStrokeType(2.f));
-    const float lv = juce::jlimit(0.f, 1.f, lastIn.load()), yy = juce::jlimit(-1.2f, 1.2f, dOn ? distort(lv, tube, mech) : lv);
-    g.setColour(juce::Colours::white);
-    g.fillEllipse(left.getX() + (lv + 1.f) * 0.5f * left.getWidth() - 3.f, left.getCentreY() - yy / 1.2f * 0.5f * left.getHeight() - 3.f, 6.f, 6.f);
-    // filter response (two poles pairs: resonant first stage, plain second)
-    const float fc = get("cut"), q = 0.55f + get("res") * 0.01f * 7.f; const bool fOn = get("fon") > 0.5f;
-    g.setColour(juce::Colour(0xff33403f)); g.drawRect(right);
-    juce::Path f;
-    for (int i = 0; i <= 200; ++i)
+    else if (idx == 1)  // filter response
     {
-        const float fr = 20.f * std::pow(1000.f, (float) i / 200.f), rr = fr / fc;
-        auto lp = [&](float qq) { return 1.f / std::sqrt((1.f - rr * rr) * (1.f - rr * rr) + (rr / qq) * (rr / qq)); };
-        const float mag = fOn ? lp(q) * lp(0.707f) : 1.f;
-        const float db = juce::jlimit(-36.f, 18.f, 20.f * std::log10(std::max(mag, 1e-4f)));
-        const float px = right.getX() + (float) i / 200.f * right.getWidth(), py = right.getBottom() - (db + 36.f) / 54.f * right.getHeight();
-        i ? f.lineTo(px, py) : f.startNewSubPath(px, py);
+        const float fc = get("cut"), q = 0.55f + get("res") * 0.01f * 7.f; const bool on = get("fon") > 0.5f;
+        auto p = r.withTrimmedLeft(34.f).withTrimmedRight(8.f).withTrimmedTop(16.f).withTrimmedBottom(14.f);
+        g.setColour(bg().brighter(0.04f)); g.fillRect(p);
+        dbAxis(g, p, -36.f, 18.f, 12.f); freqAxis(g, p);
+        juce::Path f;
+        for (int i = 0; i <= 200; ++i)
+        {
+            const float fr = 20.f * std::pow(1000.f, (float) i / 200.f), rr = fr / fc;
+            auto lp = [&](float qq) { return 1.f / std::sqrt((1.f - rr * rr) * (1.f - rr * rr) + (rr / qq) * (rr / qq)); };
+            const float mag = on ? lp(q) * lp(0.707f) : 1.f;
+            const float db = juce::jlimit(-36.f, 18.f, 20.f * std::log10(std::max(mag, 1e-4f)));
+            const float px = p.getX() + (float) i / 200.f * p.getWidth(), py = p.getBottom() - (db + 36.f) / 54.f * p.getHeight();
+            i ? f.lineTo(px, py) : f.startNewSubPath(px, py);
+        }
+        g.setColour(green()); g.strokePath(f, juce::PathStrokeType(2.f));
+        g.setColour(dim()); g.drawText("cutoff " + juce::String((int) fc) + " Hz", (int) r.getRight() - 120, (int) r.getY() + 1, 116, 11, juce::Justification::right);
     }
-    g.setColour(juce::Colour(0xff58e08a)); g.strokePath(f, juce::PathStrokeType(2.f));
-    // gain reduction bar
-    g.setColour(juce::Colour(0xff33403f)); g.drawRect(grBar);
-    const float gr = juce::jlimit(0.f, 24.f, grShown.load()) / 24.f;
-    g.setColour(juce::Colour(0xffff6b6b)); g.fillRect(grBar.withHeight(grBar.getHeight() * gr));
-    g.setColour(juce::Colour(0xff9a9690)); g.setFont(juce::FontOptions(10.f)); g.drawText("GR", grBar.getX() - 6.f, grBar.getBottom() + 1.f, grBar.getWidth() + 12.f, 12.f, juce::Justification::centred);
+    else if (idx == 2)  // compressor transfer curve and GR meter
+    {
+        const float am = get("comp") / 100.f, thr = -am * 30.f, ratio = 1.f + am * 7.f, mk = am * (get("phat") > 0.5f ? 9.f : 6.f);
+        const bool on = get("con") > 0.5f;
+        auto grR = r.removeFromRight(46.f).reduced(2.f, 6.f);
+        auto p = r.withTrimmedLeft(34.f).withTrimmedRight(6.f).withTrimmedTop(16.f).withTrimmedBottom(14.f);
+        g.setColour(bg().brighter(0.04f)); g.fillRect(p);
+        dbAxis(g, p, -48.f, 12.f, 12.f, false);
+        for (float v : { -48.f, -36.f, -24.f, -12.f, 0.f })
+        { const float x = p.getX() + (v + 48.f) / 48.f * p.getWidth(); g.setColour(grid()); g.drawVerticalLine((int) x, p.getY(), p.getBottom()); g.setColour(dim()); g.drawText(juce::String((int) v), (int) x - 14, (int) p.getBottom() + 1, 28, 11, juce::Justification::centred); }
+        auto yOf = [&](float db) { return p.getBottom() - (juce::jlimit(-48.f, 12.f, db) + 48.f) / 60.f * p.getHeight(); };
+        g.setColour(dim().withAlpha(0.6f)); g.drawLine(p.getX(), yOf(-48.f), p.getRight(), yOf(0.f), 1.f);
+        juce::Path c;
+        for (int i = 0; i <= 96; ++i)
+        {
+            const float inDb = -48.f + (float) i / 2.f, outDb = on ? (inDb > thr ? thr + (inDb - thr) / ratio : inDb) + mk : inDb;
+            const float px = p.getX() + (float) i / 96.f * p.getWidth();
+            i ? c.lineTo(px, yOf(outDb)) : c.startNewSubPath(px, yOf(outDb));
+        }
+        g.setColour(accent()); g.strokePath(c, juce::PathStrokeType(2.f));
+        if (on) { const float tx = p.getX() + (thr + 48.f) / 48.f * p.getWidth(); g.setColour(red().withAlpha(0.7f)); g.drawVerticalLine((int) tx, p.getY(), p.getBottom()); }
+        const float inDb = juce::Decibels::gainToDecibels(lastIn.load(), -60.f), outDb = on ? (inDb > thr ? thr + (inDb - thr) / ratio : inDb) + mk : inDb;
+        g.setColour(juce::Colours::white); g.fillEllipse(p.getX() + (juce::jlimit(-48.f, 0.f, inDb) + 48.f) / 48.f * p.getWidth() - 3.f, yOf(outDb) - 3.f, 6.f, 6.f);
+        g.setColour(dim()); g.drawText(on ? "thr " + juce::String(thr, 0) + " dB   ratio " + juce::String(ratio, 1) + ":1   makeup +" + juce::String(mk, 1) + " dB" : "compressor off", (int) r.getX() + 4, (int) r.getY() + 1, (int) r.getWidth(), 11, juce::Justification::left);
+        g.drawText("in dB", (int) p.getRight() - 40, (int) p.getBottom() - 14, 40, 11, juce::Justification::right);
+        grMeter(g, grR, grShown.load());
+    }
+    else                // master: input/output meters and the dry/wet balance
+    {
+        const float mix = get("mix"), vol = get("vol");
+        auto area = r.reduced(6.f, 6.f);
+        auto bottom = area.removeFromBottom(34.f);
+        auto left = area.removeFromLeft(area.getWidth() * 0.5f);
+        meter(g, left, inLevel.load(), "IN dB");
+        meter(g, area, outLevel.load(), "OUT dB");
+        g.setColour(grid()); g.fillRect(bottom.withHeight(10.f).withY(bottom.getY() + 14.f));
+        g.setColour(blue().withAlpha(0.8f)); g.fillRect(bottom.withHeight(10.f).withY(bottom.getY() + 14.f).withWidth(bottom.getWidth() * (1.f - mix * 0.01f)));
+        g.setColour(green()); g.fillRect(bottom.withHeight(10.f).withY(bottom.getY() + 14.f).withTrimmedLeft(bottom.getWidth() * (1.f - mix * 0.01f)));
+        g.setColour(dim()); g.setFont(juce::FontOptions(10.f));
+        g.drawText("dry " + juce::String(100 - (int) mix) + "%", bottom.toNearestInt().withHeight(12), juce::Justification::left);
+        g.drawText("wet " + juce::String((int) mix) + "%", bottom.toNearestInt().withHeight(12), juce::Justification::right);
+        g.drawText("volume " + juce::String(vol > 0.f ? "+" : "") + juce::String(vol, 1) + " dB", bottom.toNearestInt().withTrimmedTop(24), juce::Justification::centred);
+    }
 }
