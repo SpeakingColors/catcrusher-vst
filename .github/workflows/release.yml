@@ -122,7 +122,8 @@ jobs:
           set -ex
           sudo apt-get update && sudo apt-get install -y flatpak flatpak-builder
           flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-          sed -e "s/@RUNTIME@/${{ matrix.runtime }}/g" packaging/flatpak-ext.yml > ext.yml
+          basev="${{ matrix.runtime }}"; [ "$basev" = "25.08" ] && basev=stable
+          sed -e "s/@RUNTIME@/${{ matrix.runtime }}/g" -e "s/@BASEV@/$basev/g" packaging/flatpak-ext.yml > ext.yml
           flatpak-builder --user --force-clean --install-deps-from=flathub --repo=repo build-dir ext.yml
           echo "--- files in the extension:"; find build-dir/files -name "*.vst3" -maxdepth 6 | head
           n=$(find build-dir/files -name "*.vst3" | wc -l); [ "$n" -gt 0 ] || { echo "no .vst3 in the extension"; find build-dir/files | head -40; exit 1; }
