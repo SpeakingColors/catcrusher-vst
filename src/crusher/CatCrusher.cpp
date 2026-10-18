@@ -195,7 +195,7 @@ void CatCrusher::paintPanel(int idx, juce::Graphics& g, juce::Rectangle<float> r
         g.setColour(dim()); g.drawText("input level", p.toNearestInt().withY((int) p.getBottom() + 1).withHeight(11), juce::Justification::centred);
         g.drawText("-1", (int) p.getX(), (int) p.getBottom() + 1, 20, 11, juce::Justification::left); g.drawText("+1", (int) p.getRight() - 20, (int) p.getBottom() + 1, 20, 11, juce::Justification::right);
         g.drawText("output", (int) r.getX() + 2, (int) r.getY() + 1, 60, 11, juce::Justification::left);
-        g.drawText("gain x" + juce::String(1.f + tube * 0.24f, 1), (int) r.getRight() - 80, (int) r.getY() + 1, 76, 11, juce::Justification::right);
+        g.setColour(accent()); g.drawText("gain x" + juce::String(1.f + tube * 0.24f, 1), (int) r.getRight() - 80, (int) r.getY() + 1, 76, 11, juce::Justification::right);
     }
     else if (idx == 1)  // filter response
     {
@@ -214,7 +214,7 @@ void CatCrusher::paintPanel(int idx, juce::Graphics& g, juce::Rectangle<float> r
             i ? f.lineTo(px, py) : f.startNewSubPath(px, py);
         }
         g.setColour(green()); g.strokePath(f, juce::PathStrokeType(2.f));
-        g.setColour(dim()); g.drawText("cutoff " + juce::String((int) fc) + " Hz", (int) r.getRight() - 120, (int) r.getY() + 1, 116, 11, juce::Justification::right);
+        g.setColour(green()); g.drawText("cutoff " + juce::String((int) fc) + " Hz", (int) r.getRight() - 120, (int) r.getY() + 1, 116, 11, juce::Justification::right);
     }
     else if (idx == 2)  // compressor transfer curve and GR meter
     {
@@ -240,8 +240,8 @@ void CatCrusher::paintPanel(int idx, juce::Graphics& g, juce::Rectangle<float> r
         const float inDb = juce::Decibels::gainToDecibels(lastIn.load(), -60.f), outDb = on ? (inDb > thr ? thr + (inDb - thr) / ratio : inDb) + mk : inDb;
         g.setColour(juce::Colours::white); g.fillEllipse(p.getX() + (juce::jlimit(-48.f, 0.f, inDb) + 48.f) / 48.f * p.getWidth() - 3.f, yOf(outDb) - 3.f, 6.f, 6.f);
         g.setColour(dim());
-        g.drawText(on ? "thr " + juce::String(thr, 0) + " dB   ratio " + juce::String(ratio, 1) + ":1" : "compressor off", p.toNearestInt().withY((int) r.getY() + 1).withHeight(11), juce::Justification::centred);
-        if (on) g.drawText("makeup +" + juce::String(mk, 1) + " dB", p.toNearestInt().withY((int) r.getY() + 13).withHeight(11), juce::Justification::centred);
+        g.setColour(red()); g.drawText(on ? "thr " + juce::String(thr, 0) + " dB   ratio " + juce::String(ratio, 1) + ":1" : "compressor off", p.toNearestInt().withY((int) r.getY() + 1).withHeight(11), juce::Justification::centred);
+        g.setColour(accent()); if (on) g.drawText("makeup +" + juce::String(mk, 1) + " dB", p.toNearestInt().withY((int) r.getY() + 13).withHeight(11), juce::Justification::centred);
         g.drawText("in dB", (int) p.getRight() - 40, (int) p.getBottom() - 14, 40, 11, juce::Justification::right);
         catfx::viz::grMeter(g, grR, grShown.load());
     }
