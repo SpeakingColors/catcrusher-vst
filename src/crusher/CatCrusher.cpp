@@ -192,7 +192,7 @@ void CatCrusher::paintPanel(int idx, juce::Graphics& g, juce::Rectangle<float> r
         g.setColour(accent()); g.strokePath(path, juce::PathStrokeType(2.f));
         const float lv = juce::jlimit(0.f, 1.f, lastIn.load()), yy = juce::jlimit(-1.2f, 1.2f, on ? distort(lv, tube, mech, dtype) : lv);
         g.setColour(juce::Colours::white); g.fillEllipse(p.getX() + (lv + 1.f) * 0.5f * p.getWidth() - 3.f, p.getCentreY() - yy / 1.2f * 0.5f * p.getHeight() - 3.f, 6.f, 6.f);
-        g.setColour(dim()); g.drawText("input level", p.toNearestInt().withY((int) p.getBottom() + 1).withHeight(11), juce::Justification::centred);
+        g.setColour(blue()); g.drawText("input level", p.toNearestInt().withY((int) p.getBottom() + 1).withHeight(11), juce::Justification::centred);
         g.drawText("-1", (int) p.getX(), (int) p.getBottom() + 1, 20, 11, juce::Justification::left); g.drawText("+1", (int) p.getRight() - 20, (int) p.getBottom() + 1, 20, 11, juce::Justification::right);
         g.drawText("output", (int) r.getX() + 2, (int) r.getY() + 1, 60, 11, juce::Justification::left);
         g.setColour(accent()); g.drawText("gain x" + juce::String(1.f + tube * 0.24f, 1), (int) r.getRight() - 80, (int) r.getY() + 1, 76, 11, juce::Justification::right);
@@ -225,7 +225,7 @@ void CatCrusher::paintPanel(int idx, juce::Graphics& g, juce::Rectangle<float> r
         g.setColour(bg().brighter(0.04f)); g.fillRect(p);
         dbAxis(g, p, -48.f, 12.f, 12.f, false);
         for (float v : { -48.f, -36.f, -24.f, -12.f, 0.f })
-        { const float x = p.getX() + (v + 48.f) / 48.f * p.getWidth(); g.setColour(grid()); g.drawVerticalLine((int) x, p.getY(), p.getBottom()); g.setColour(dim()); g.drawText(juce::String((int) v), (int) x - 14, (int) p.getBottom() + 1, 28, 11, juce::Justification::centred); }
+        { const float x = p.getX() + (v + 48.f) / 48.f * p.getWidth(); g.setColour(grid()); g.drawVerticalLine((int) x, p.getY(), p.getBottom()); g.setColour(green()); g.drawText(juce::String((int) v), (int) x - 14, (int) p.getBottom() + 1, 28, 11, juce::Justification::centred); }
         auto yOf = [&](float db) { return p.getBottom() - (juce::jlimit(-48.f, 12.f, db) + 48.f) / 60.f * p.getHeight(); };
         g.setColour(dim().withAlpha(0.6f)); g.drawLine(p.getX(), yOf(-48.f), p.getRight(), yOf(0.f), 1.f);
         juce::Path c;
@@ -242,7 +242,7 @@ void CatCrusher::paintPanel(int idx, juce::Graphics& g, juce::Rectangle<float> r
         g.setColour(dim());
         g.setColour(red()); g.drawText(on ? "thr " + juce::String(thr, 0) + " dB   ratio " + juce::String(ratio, 1) + ":1" : "compressor off", p.toNearestInt().withY((int) r.getY() + 1).withHeight(11), juce::Justification::centred);
         g.setColour(accent()); if (on) g.drawText("makeup +" + juce::String(mk, 1) + " dB", p.toNearestInt().withY((int) r.getY() + 13).withHeight(11), juce::Justification::centred);
-        g.drawText("in dB", (int) p.getRight() - 40, (int) p.getBottom() - 14, 40, 11, juce::Justification::right);
+        g.setColour(blue()); g.drawText("in dB", (int) p.getRight() - 40, (int) p.getBottom() - 14, 40, 11, juce::Justification::right);
         catfx::viz::grMeter(g, grR, grShown.load());
     }
     else                // master: input/output meters and the dry/wet balance
@@ -256,9 +256,9 @@ void CatCrusher::paintPanel(int idx, juce::Graphics& g, juce::Rectangle<float> r
         g.setColour(grid()); g.fillRect(bottom.withHeight(10.f).withY(bottom.getY() + 14.f));
         g.setColour(blue().withAlpha(0.8f)); g.fillRect(bottom.withHeight(10.f).withY(bottom.getY() + 14.f).withWidth(bottom.getWidth() * (1.f - mix * 0.01f)));
         g.setColour(green()); g.fillRect(bottom.withHeight(10.f).withY(bottom.getY() + 14.f).withTrimmedLeft(bottom.getWidth() * (1.f - mix * 0.01f)));
-        g.setColour(dim()); g.setFont(juce::FontOptions(10.f));
-        g.drawText("dry " + juce::String(100 - (int) mix) + "%", bottom.toNearestInt().withHeight(12), juce::Justification::left);
-        g.drawText("wet " + juce::String((int) mix) + "%", bottom.toNearestInt().withHeight(12), juce::Justification::right);
-        g.drawText("volume " + juce::String(vol > 0.f ? "+" : "") + juce::String(vol, 1) + " dB", bottom.toNearestInt().withTrimmedTop(24), juce::Justification::centred);
+        g.setFont(juce::FontOptions(10.f));
+        g.setColour(blue()); g.drawText("dry " + juce::String(100 - (int) mix) + "%", bottom.toNearestInt().withHeight(12), juce::Justification::left);
+        g.setColour(green()); g.drawText("wet " + juce::String((int) mix) + "%", bottom.toNearestInt().withHeight(12), juce::Justification::right);
+        g.setColour(accent()); g.drawText("volume " + juce::String(vol > 0.f ? "+" : "") + juce::String(vol, 1) + " dB", bottom.toNearestInt().withTrimmedTop(24), juce::Justification::centred);
     }
 }
