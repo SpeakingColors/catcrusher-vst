@@ -224,7 +224,7 @@ void CatCrusher::paintPanel(int idx, juce::Graphics& g, juce::Rectangle<float> r
         g.setColour(juce::Colours::white); g.fillEllipse(p.getX() + (juce::jlimit(-48.f, 0.f, inDb) + 48.f) / 48.f * p.getWidth() - 3.f, yOf(outDb) - 3.f, 6.f, 6.f);
         g.setColour(dim()); g.drawText(on ? "thr " + juce::String(thr, 0) + " dB   ratio " + juce::String(ratio, 1) + ":1   makeup +" + juce::String(mk, 1) + " dB" : "compressor off", (int) r.getX() + 4, (int) r.getY() + 1, (int) r.getWidth(), 11, juce::Justification::left);
         g.drawText("in dB", (int) p.getRight() - 40, (int) p.getBottom() - 14, 40, 11, juce::Justification::right);
-        grMeter(g, grR, grShown.load());
+        catfx::viz::grMeter(g, grR, grShown.load());
     }
     else                // master: input/output meters and the dry/wet balance
     {
