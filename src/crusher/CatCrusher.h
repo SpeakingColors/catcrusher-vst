@@ -1,7 +1,7 @@
 #pragma once
 #include "common/FxBase.h"
 
-// Cat Crusher: Distortion (Tube + Mech, 2x oversampled) > Filter (24 dB low-pass) > Compressor (with Phat mode) > Master.
+// Cat Crusher: Distortion (6 types + Mech, 2x oversampled) > Filter (24 dB low-pass) > Compressor (with Phat mode) > Master.
 // Four sections, each with its own ON switch, plus presets and Randomize. Original design and code;
 // the layout idea is a one-box crusher, nothing is copied from any other product.
 class CatCrusher : public catfx::FxBase
@@ -14,7 +14,7 @@ public:
     void paintPanel(int index, juce::Graphics&, juce::Rectangle<float>) override;
     std::vector<Preset> presets() const override;
     juce::StringArray randomExclude() const override { return { "vol", "don", "fon", "con" }; }
-    static float distort(float x, float tube, float mech);
+    static float distort(float x, float tube, float mech, int type = 0);
 private:
     juce::dsp::Oversampling<float> os { 2, 1, juce::dsp::Oversampling<float>::filterHalfBandPolyphaseIIR, true, false };
     juce::dsp::StateVariableTPTFilter<float> filtA[2], filtB[2];

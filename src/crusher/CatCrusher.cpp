@@ -5,21 +5,22 @@ using namespace catfx;
 
 CatCrusher::CatCrusher()
     : FxBase("Cat Crusher",
-        { { "tube", "Tube", " %", 0.f, 100.f, 30.f, 0.f, "Tube: warm, smooth saturation with even harmonics. Higher = more drive and warmth." },
+        { { "tube", "Drive", " %", 0.f, 100.f, 30.f, 0.f, "Drive: how hard the selected distortion type is pushed. Higher = more saturation and harmonics." },
           { "mech", "Mech", " %", 0.f, 100.f, 0.f, 0.f, "Mech: harder, more aggressive digital-style crunch (folds and clips the wave). 0 = off." },
           { "cut", "Cutoff", " Hz", 40.f, 20000.f, 20000.f, 1500.f, "Cutoff: frequency of the 24 dB low-pass filter. Rolls off the harsh highs that distortion creates." },
           { "res", "Res", " %", 0.f, 100.f, 10.f, 0.f, "Resonance: boosts the frequencies right at the cutoff for a vocal or squelchy edge." },
           { "comp", "Amount", " %", 0.f, 100.f, 30.f, 0.f, "Compressor amount: lowers the threshold and raises the ratio together (and adds make-up gain). More = denser and louder." },
           { "vol", "Volume", " dB", -24.f, 12.f, 0.f, 0.f, "Volume: final output level. Match it to the bypassed level when comparing." },
           { "mix", "Mix", " %", 0.f, 100.f, 100.f, 0.f, "Mix: dry/wet blend. Lower values keep the original punch (parallel crush)." } },
-        { { "don", "Distortion", { "Off", "On" }, 1, "Distortion on/off." },
+        { { "type", "Type", { "Tube", "Soft Sat", "Transistor", "Tape", "Diode", "Hard Clip" }, 0, "Distortion type. Tube: warm even harmonics. Soft Sat: smooth and symmetric, great on buses. Transistor: console-style, punchy and forward. Tape: gentle and rounded. Diode: edgy and asymmetric. Hard Clip: tight, loud and aggressive." },
+          { "don", "Distortion", { "Off", "On" }, 1, "Distortion on/off." },
           { "fon", "Filter", { "Off", "On" }, 1, "Filter on/off." },
           { "con", "Compressor", { "Off", "On" }, 1, "Compressor on/off." },
           { "phat", "Phat mode", { "Off", "On" }, 0, "Phat mode: adds low-end weight before the compressor, a slower release and a soft ceiling. Great on kicks and bass." } }) {}
 
 std::vector<catfx::PanelSpec> CatCrusher::panels() const
 {
-    return { { "Distortion", { "tube", "mech" }, { "don" }, 1.f },
+    return { { "Distortion", { "tube", "mech" }, { "type", "don" }, 1.f },
              { "Filter", { "cut", "res" }, { "fon" }, 1.f },
              { "Compressor", { "comp" }, { "con", "phat" }, 1.f },
              { "Master", { "vol", "mix" }, {}, 1.f } };
@@ -29,22 +30,32 @@ std::vector<FxBase::Preset> CatCrusher::presets() const
 {
     return {
         { "Init", { } },
-        { "Warm Bus", { { "tube", 22.f }, { "comp", 25.f }, { "cut", 14000.f } } },
-        { "Gritty Drums", { { "tube", 45.f }, { "mech", 25.f }, { "comp", 55.f }, { "mix", 70.f } } },
-        { "Fat Bass", { { "tube", 55.f }, { "cut", 4200.f }, { "res", 15.f }, { "comp", 60.f }, { "phat", 1.f } } },
+        { "Warm Bus", { { "type", 3.f }, { "tube", 22.f }, { "comp", 25.f }, { "cut", 14000.f } } },
+        { "Gritty Drums", { { "type", 2.f }, { "tube", 45.f }, { "mech", 25.f }, { "comp", 55.f }, { "mix", 70.f } } },
+        { "Fat Bass", { { "type", 2.f }, { "tube", 55.f }, { "cut", 4200.f }, { "res", 15.f }, { "comp", 60.f }, { "phat", 1.f } } },
         { "Radio Crush", { { "tube", 40.f }, { "mech", 60.f }, { "cut", 3500.f }, { "res", 35.f }, { "comp", 70.f } } },
         { "Screech Lead", { { "tube", 70.f }, { "mech", 35.f }, { "cut", 7000.f }, { "res", 45.f }, { "comp", 40.f } } },
-        { "Hardstyle Kick Crunch", { { "tube", 75.f }, { "mech", 20.f }, { "cut", 9000.f }, { "comp", 65.f }, { "phat", 1.f }, { "mix", 85.f } } },
+        { "Hardstyle Kick Crunch", { { "type", 4.f }, { "tube", 75.f }, { "mech", 20.f }, { "cut", 9000.f }, { "comp", 65.f }, { "phat", 1.f }, { "mix", 85.f } } },
         { "UK Hardcore Stab", { { "tube", 50.f }, { "mech", 55.f }, { "cut", 8500.f }, { "res", 25.f }, { "comp", 45.f } } },
-        { "Smooth Lows", { { "tube", 30.f }, { "cut", 1800.f }, { "comp", 35.f }, { "phat", 1.f } } },
+        { "Smooth Lows", { { "type", 1.f }, { "tube", 30.f }, { "cut", 1800.f }, { "comp", 35.f }, { "phat", 1.f } } },
         { "Mech Mayhem", { { "tube", 30.f }, { "mech", 95.f }, { "cut", 5200.f }, { "res", 50.f }, { "comp", 80.f }, { "mix", 80.f } } } };
 }
 
-float CatCrusher::distort(float x, float tube, float mech)
+float CatCrusher::distort(float x, float tube, float mech, int type)
 {
-    // Tube: asymmetric tanh (even harmonics). Mech: harder, folded and clipped.
-    const float tg = 1.f + tube * 0.01f * 24.f;
-    float y = std::tanh(x * tg + 0.12f * tube * 0.01f) - std::tanh(0.12f * tube * 0.01f);
+    // Six saturation shapes, all original maths. Every one is driven by the same gain and scaled by the same
+    // normaliser so switching type keeps the level in the same ballpark. Mech (fold/clip) comes after.
+    const float tg = 1.f + tube * 0.01f * 24.f, u = x * tg, au = std::abs(u);
+    float y;
+    switch (type)
+    {
+        case 1:  y = std::tanh(u); break;                                                            // soft sat: symmetric, odd harmonics
+        case 2:  y = u >= 0.f ? u / (1.f + au) : u / (1.f + 0.55f * au) * 1.25f; y = juce::jlimit(-1.2f, 1.f, y); break; // transistor: asymmetric knee
+        case 3:  y = u / std::pow(1.f + std::pow(au, 1.6f), 1.f / 1.6f); break;                      // tape: wide, rounded knee
+        case 4:  y = u >= 0.f ? 1.f - std::exp(-u) : -0.8f * (1.f - std::exp(0.5f * u)); break;      // diode: exponential, uneven
+        case 5:  y = u / std::pow(1.f + std::pow(au, 6.f), 1.f / 6.f); break;                        // hard clip: tight, sharp knee
+        default: y = std::tanh(u + 0.12f * tube * 0.01f) - std::tanh(0.12f * tube * 0.01f); break;   // tube: biased tanh, even harmonics
+    }
     y /= (1.f + 0.18f * (tg - 1.f)) * 0.9f + 0.1f;
     if (mech > 0.f)
     {
@@ -74,6 +85,7 @@ void CatCrusher::process(juce::AudioBuffer<float>& buf, const juce::AudioBuffer<
 {
     const int n = buf.getNumSamples(), nch = juce::jmin(2, buf.getNumChannels());
     const bool dOn = get("don") > 0.5f, fOn = get("fon") > 0.5f, cOn = get("con") > 0.5f, phat = get("phat") > 0.5f;
+    const int dtype = (int) get("type");
     const float tube = get("tube"), mech = get("mech"), amount = get("comp") / 100.f;
     const float mix = get("mix") / 100.f, outG = juce::Decibels::decibelsToGain(get("vol"));
     const float cut = get("cut"), q = 0.55f + get("res") * 0.01f * 7.f;
@@ -106,7 +118,7 @@ void CatCrusher::process(juce::AudioBuffer<float>& buf, const juce::AudioBuffer<
         for (size_t c = 0; c < up.getNumChannels(); ++c)
         {
             auto* d = up.getChannelPointer(c);
-            for (size_t i = 0; i < up.getNumSamples(); ++i) d[i] = distort(d[i], tube, mech);
+            for (size_t i = 0; i < up.getNumSamples(); ++i) d[i] = distort(d[i], tube, mech, dtype);
         }
     os.processSamplesDown(block);
     if (dOn)
@@ -162,18 +174,19 @@ void CatCrusher::paintPanel(int idx, juce::Graphics& g, juce::Rectangle<float> r
     g.setFont(juce::FontOptions(11.f));
     if (idx == 0)       // distortion curve
     {
+        const int dtype = (int) get("type");
         const float tube = get("tube"), mech = get("mech"); const bool on = get("don") > 0.5f;
         auto p = r.withTrimmedLeft(8.f).reduced(10.f, 14.f); p.removeFromBottom(10.f);
         g.setColour(grid()); g.drawRect(p); g.drawLine(p.getX(), p.getCentreY(), p.getRight(), p.getCentreY()); g.drawLine(p.getCentreX(), p.getY(), p.getCentreX(), p.getBottom());
         juce::Path path;
         for (int i = 0; i <= 200; ++i)
         {
-            const float x = -1.f + (float) i / 100.f, y = juce::jlimit(-1.2f, 1.2f, on ? distort(x, tube, mech) : x);
+            const float x = -1.f + (float) i / 100.f, y = juce::jlimit(-1.2f, 1.2f, on ? distort(x, tube, mech, dtype) : x);
             const float px = p.getX() + (x + 1.f) * 0.5f * p.getWidth(), py = p.getCentreY() - y / 1.2f * 0.5f * p.getHeight();
             i ? path.lineTo(px, py) : path.startNewSubPath(px, py);
         }
         g.setColour(accent()); g.strokePath(path, juce::PathStrokeType(2.f));
-        const float lv = juce::jlimit(0.f, 1.f, lastIn.load()), yy = juce::jlimit(-1.2f, 1.2f, on ? distort(lv, tube, mech) : lv);
+        const float lv = juce::jlimit(0.f, 1.f, lastIn.load()), yy = juce::jlimit(-1.2f, 1.2f, on ? distort(lv, tube, mech, dtype) : lv);
         g.setColour(juce::Colours::white); g.fillEllipse(p.getX() + (lv + 1.f) * 0.5f * p.getWidth() - 3.f, p.getCentreY() - yy / 1.2f * 0.5f * p.getHeight() - 3.f, 6.f, 6.f);
         g.setColour(dim()); g.drawText("input level", p.toNearestInt().withY((int) p.getBottom() + 1).withHeight(11), juce::Justification::centred);
         g.drawText("-1", (int) p.getX(), (int) p.getBottom() + 1, 20, 11, juce::Justification::left); g.drawText("+1", (int) p.getRight() - 20, (int) p.getBottom() + 1, 20, 11, juce::Justification::right);
