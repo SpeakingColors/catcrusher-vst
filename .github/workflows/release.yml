@@ -111,7 +111,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        runtime: ['24.08', '25.08']
+        runtime: ['25.08']
     steps:
       - uses: actions/checkout@v4
       - name: Build the extension
