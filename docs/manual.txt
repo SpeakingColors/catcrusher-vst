@@ -6,6 +6,7 @@ Cat Crusher is a distortion, filter and compressor in one plugin. It makes drums
 - Set Type first, then raise Drive until it sounds right; the Distortion curve shows the shape you are using.
 - Use Cutoff to remove harsh highs (Filter type Low-pass), thin the lows (High-pass) or make a telephone or radio sound (Band-pass), Amount for density, and Mix for parallel crush.
 - Compare with the plugin bypassed and set Volume so both are equally loud.
+- The round gear button in the header opens Settings: the plugin version, a link to the GitHub page and the releases page (it opens your browser; the plugin itself never goes online), and a switch for the info bubbles. Hover any control for about one second to see what it does; the round i button also turns the bubbles on or off.
 
 # Recommendations
 - Kick: Type Diode or Transistor, Drive 60 to 80, Phat mode on, Mix 80 to 90 to keep the click.
