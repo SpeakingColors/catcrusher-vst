@@ -5,8 +5,8 @@ using namespace catfx;
 
 CatCrusher::CatCrusher()
     : FxBase("Cat Crusher",
-        { { "tube", "Drive", " %", 0.f, 100.f, 30.f, 0.f, "Drive: how hard the selected distortion type is pushed. Higher = more saturation and harmonics." },
-          { "mech", "Mech", " %", 0.f, 100.f, 0.f, 0.f, "Mech: harder, more aggressive digital-style crunch (folds and clips the wave). 0 = off." },
+        { { "tube", "Drive", " %", 0.f, 100.f, 30.f, 0.f, "Drive: how hard the selected distortion type is pushed. Higher = more saturation and harmonics.", 300.f },
+          { "mech", "Mech", " %", 0.f, 100.f, 0.f, 0.f, "Mech: harder, more aggressive digital-style crunch (folds and clips the wave). 0 = off.", 200.f },
           { "cut", "Cutoff", " Hz", 40.f, 20000.f, 20000.f, 1500.f, "Cutoff: frequency of the 24 dB filter (low-pass, high-pass or band-pass). As a low-pass it rolls off the harsh highs that distortion creates." },
           { "res", "Res", " %", 0.f, 100.f, 10.f, 0.f, "Resonance: boosts the frequencies right at the cutoff for a vocal or squelchy edge." },
           { "comp", "Amount", " %", 0.f, 100.f, 30.f, 0.f, "Compressor amount: lowers the threshold and raises the ratio together. Make-up gain is automatic, so the level stays the same at any amount and only the density changes." },
