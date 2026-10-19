@@ -5,7 +5,7 @@
 Free, open source distortion, compressor and filter plugin for Linux (VST3 and standalone). Bass shelf, compressor, drive into tube, fold or hard clip shapers (2x oversampled), and a multimode filter, with a live waveshaper and filter display.
 
 ## Status
-Early scaffold. It builds in CI (Linux VST3 and standalone) but has not been tuned by ear yet. Free and open source. Donations welcome (link coming).
+Early scaffold. It builds in CI (Linux VST3 and standalone) but has not been tuned by ear yet. Free and open source. Donations welcome: https://ko-fi.com/studio87
 
 ## Docs
 - [Roadmap](ROADMAP.md)
