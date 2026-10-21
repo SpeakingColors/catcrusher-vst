@@ -4,6 +4,8 @@
 
 Free, open source distortion, compressor and filter plugin for Linux (VST3 and standalone). Bass shelf, compressor, drive into tube, fold or hard clip shapers (2x oversampled), and a multimode filter, with a live waveshaper and filter display.
 
+**Manual:** [PDF with interface tour, opens in the browser](https://github.com/SpeakingColors/catcrusher-vst/blob/main/docs/CatCrusher-manual.pdf)
+
 ## Status
 Early scaffold. It builds in CI (Linux VST3 and standalone) but has not been tuned by ear yet.
 
