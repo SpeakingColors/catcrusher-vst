@@ -6,6 +6,8 @@ Free, open source distortion, compressor and filter plugin for Linux (VST3 and s
 
 **Manual:** [PDF with interface tour, opens in the browser](https://github.com/SpeakingColors/catcrusher-vst/blob/main/docs/CatCrusher-manual.pdf)
 
+<p align="center"><img src="docs/screenshot.png" alt="Cat Crusher editor" width="900"><br><sub>Screenshot of the plugin page in docs/mockups.</sub></p>
+
 ## Status
 Early scaffold. It builds in CI (Linux VST3 and standalone) but has not been tuned by ear yet.
 
