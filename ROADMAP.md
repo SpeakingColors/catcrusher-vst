@@ -4,7 +4,7 @@
 - [ ] Listen and tune default shapes and compressor
 - [ ] Bit/sample-rate crush stage
 - [ ] Input and output meters with peak hold
-- [ ] Presets (own, documented)
+- [x] Factory presets (own); [ ] documented per preset in the manual
 - [ ] Parallel/dry blend with phase-aligned filter option
 
 ## Every cat plugin
