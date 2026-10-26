@@ -1,69 +1,57 @@
 {
  "key": "crusher",
- "preset": "Hardstyle Kick Crunch",
+ "preset": "Init",
  "box": [
-  100,
-  207.78125,
-  1100,
-  438.984375
+  0,
+  0,
+  2000,
+  906
  ],
  "items": [
   {
    "title": "Distortion",
-   "box": [
-    135,
-    272.78125,
-    248.5,
-    360.984375
-   ],
+   "box": {
+    "x": 72,
+    "y": 120,
+    "w": 446,
+    "h": 762
+   },
+   "img": "crusher_p1.png",
    "disp": {
     "letter": "A",
-    "box": [
-     143,
-     302.171875,
-     232.5,
-     194
-    ]
+    "box": {
+     "x": 86,
+     "y": 166,
+     "w": 418,
+     "h": 450
+    }
    },
    "items": [
     {
-     "n": 6,
-     "kind": "knob",
-     "name": "Drive",
-     "tip": "Drive: how hard the selected distortion type is pushed. Higher = more saturation and harmonics. Extended range goes to 300 %.",
-     "value": "75 %",
-     "box": [
-      143,
-      502.171875,
-      115.25,
-      84
-     ]
-    },
-    {
      "n": 7,
      "kind": "knob",
-     "name": "Mech",
-     "tip": "Mech: harder, digital-style crunch (folds and clips the wave). 0 = off. Extended range goes to 200 %.",
-     "value": "20 %",
-     "box": [
-      260.25,
-      502.171875,
-      115.25,
-      84
-     ]
+     "name": "Drive",
+     "tip": "Drive: how hard the selected distortion type is pushed. Higher = more saturation and harmonics.",
+     "value": "30 %",
+     "box": {
+      "x": 86,
+      "y": 628,
+      "w": 208,
+      "h": 168
+     }
     },
     {
      "n": 8,
-     "kind": "menu",
-     "name": "Distortion type. Fuzz",
-     "tip": "Distortion type. Fuzz: thick and woolly. RAT: gritty pedal-style hard clip. Overdrive: smooth mid-forward. Rectifier: bright octave-ish edge. Tube: warm even harmonics. Soft Sat: smooth, great on buses. Transistor: console-style, punchy. Tape: gentle and rounded. Diode: edgy and asymmetric. Hard Clip: tight and aggressive.",
-     "value": "Diode",
-     "box": [
-      145,
-      592.171875,
-      100,
-      33.59375
-     ]
+     "kind": "knob",
+     "name": "Mech",
+     "tip": "Mech: harder, more aggressive digital-style crunch (folds and clips the wave). 0 = off.",
+     "value": "0 %",
+     "box": {
+      "x": 294,
+      "y": 628,
+      "w": 208,
+      "h": 168
+     }
     },
     {
      "n": 9,
@@ -71,253 +59,255 @@
      "name": "On",
      "tip": "Distortion on/off.",
      "value": "",
-     "box": [
-      251,
-      592.171875,
-      42.984375,
-      33.59375
-     ]
+     "box": {
+      "x": 86,
+      "y": 812,
+      "w": 156,
+      "h": 52
+     }
+    },
+    {
+     "n": 10,
+     "kind": "menu",
+     "name": "Type",
+     "tip": "Distortion type. Tube: warm even harmonics. Soft Sat: smooth and symmetric, great on buses. Transistor: console-style, punchy and forward. Tape: gentle and rounded. Diode: edgy and asymmetric. Hard Clip: tight, loud and aggressive. Fuzz: thick, gated and woolly. RAT: hard-clipped, gritty distortion pedal style. Overdrive: smooth, mid-forward tube-pedal style. Rectifier: adds a bright octave-ish edge.",
+     "value": "Tube",
+     "box": {
+      "x": 254,
+      "y": 812,
+      "w": 250,
+      "h": 52
+     }
     }
-   ],
-   "img": "crusher_p1.png"
+   ]
   },
   {
    "title": "Filter",
-   "box": [
-    395.5,
-    272.78125,
-    248.5,
-    360.984375
-   ],
+   "box": {
+    "x": 542,
+    "y": 120,
+    "w": 446,
+    "h": 762
+   },
+   "img": "crusher_p2.png",
    "disp": {
     "letter": "B",
-    "box": [
-     403.5,
-     302.171875,
-     232.5,
-     194
-    ]
+    "box": {
+     "x": 556,
+     "y": 166,
+     "w": 418,
+     "h": 390
+    }
    },
    "items": [
     {
-     "n": 10,
-     "kind": "knob",
-     "name": "Cutoff",
-     "tip": "Cutoff: frequency of the 24 dB low-pass filter. Rolls off the harsh highs distortion creates.",
-     "value": "9000 Hz",
-     "box": [
-      403.5,
-      502.171875,
-      115.25,
-      84
-     ]
-    },
-    {
      "n": 11,
      "kind": "knob",
-     "name": "Res",
-     "tip": "Resonance: boosts the frequencies right at the cutoff.",
-     "value": "10 %",
-     "box": [
-      520.75,
-      502.171875,
-      115.25,
-      84
-     ]
+     "name": "Cutoff",
+     "tip": "Cutoff: frequency of the 24 dB filter (low-pass, high-pass or band-pass). As a low-pass it rolls off the harsh highs that distortion creates.",
+     "value": "20000 Hz",
+     "box": {
+      "x": 556,
+      "y": 568,
+      "w": 208,
+      "h": 168
+     }
     },
     {
      "n": 12,
+     "kind": "knob",
+     "name": "Res",
+     "tip": "Resonance: boosts the frequencies right at the cutoff for a vocal or squelchy edge.",
+     "value": "10 %",
+     "box": {
+      "x": 764,
+      "y": 568,
+      "w": 208,
+      "h": 168
+     }
+    },
+    {
+     "n": 13,
      "kind": "menu",
      "name": "Filter type",
      "tip": "Filter type: Low-pass keeps the lows and cuts the highs, High-pass keeps the highs and cuts the lows, Band-pass keeps only a band around the cutoff.",
      "value": "Low-pass",
-     "box": [
-      405.5,
-      592.171875,
-      106,
-      33.59375
-     ]
+     "box": {
+      "x": 556,
+      "y": 752,
+      "w": 418,
+      "h": 52
+     }
     },
     {
-     "n": 13,
+     "n": 14,
      "kind": "button",
      "name": "On",
      "tip": "Filter on/off.",
      "value": "",
-     "box": [
-      517.5,
-      592.171875,
-      42.984375,
-      33.59375
-     ]
+     "box": {
+      "x": 556,
+      "y": 812,
+      "w": 220,
+      "h": 52
+     }
     }
-   ],
-   "img": "crusher_p2.png"
+   ]
   },
   {
    "title": "Compressor",
-   "box": [
-    656,
-    272.78125,
-    248.5,
-    360.984375
-   ],
+   "box": {
+    "x": 1012,
+    "y": 120,
+    "w": 446,
+    "h": 762
+   },
+   "img": "crusher_p3.png",
    "disp": {
     "letter": "C",
-    "box": [
-     664,
-     302.171875,
-     232.5,
-     194
-    ]
+    "box": {
+     "x": 1026,
+     "y": 166,
+     "w": 418,
+     "h": 390
+    }
    },
    "items": [
     {
-     "n": 14,
+     "n": 15,
      "kind": "knob",
      "name": "Amount",
-     "tip": "Compressor amount: lowers the threshold and raises the ratio together, with make-up gain.",
-     "value": "65 %",
-     "box": [
-      664,
-      502.171875,
-      232.5,
-      84
-     ]
-    },
-    {
-     "n": 15,
-     "kind": "button",
-     "name": "On",
-     "tip": "Compressor on/off.",
-     "value": "",
-     "box": [
-      666,
-      592.171875,
-      42.984375,
-      33.59375
-     ]
+     "tip": "Compressor amount: lowers the threshold and raises the ratio together. Make-up gain is automatic, so the level stays the same at any amount and only the density changes.",
+     "value": "30 %",
+     "box": {
+      "x": 1026,
+      "y": 568,
+      "w": 418,
+      "h": 168
+     }
     },
     {
      "n": 16,
      "kind": "button",
+     "name": "On",
+     "tip": "Compressor on/off.",
+     "value": "",
+     "box": {
+      "x": 1026,
+      "y": 752,
+      "w": 220,
+      "h": 52
+     }
+    },
+    {
+     "n": 17,
+     "kind": "button",
      "name": "Phat mode",
      "tip": "Phat mode: adds low-end weight before the compressor, a slower release and a soft ceiling. Great on kicks and bass.",
      "value": "",
-     "box": [
-      714.984375,
-      592.171875,
-      95,
-      33.59375
-     ]
+     "box": {
+      "x": 1026,
+      "y": 812,
+      "w": 220,
+      "h": 52
+     }
     }
-   ],
-   "img": "crusher_p3.png"
+   ]
   },
   {
    "title": "Master",
-   "box": [
-    916.5,
-    272.78125,
-    248.5,
-    360.984375
-   ],
+   "box": {
+    "x": 1482,
+    "y": 120,
+    "w": 446,
+    "h": 762
+   },
+   "img": "crusher_p4.png",
    "disp": {
     "letter": "D",
-    "box": [
-     924.5,
-     302.171875,
-     232.5,
-     194
-    ]
+    "box": {
+     "x": 1496,
+     "y": 166,
+     "w": 418,
+     "h": 522
+    }
    },
    "items": [
     {
-     "n": 17,
-     "kind": "knob",
-     "name": "Volume",
-     "tip": "Volume: final output level.",
-     "value": "0.0 dB",
-     "box": [
-      924.5,
-      502.171875,
-      115.25,
-      84
-     ]
-    },
-    {
      "n": 18,
      "kind": "knob",
+     "name": "Volume",
+     "tip": "Volume: final output level. Match it to the bypassed level when comparing.",
+     "value": "0.0 dB",
+     "box": {
+      "x": 1496,
+      "y": 700,
+      "w": 208,
+      "h": 168
+     }
+    },
+    {
+     "n": 19,
+     "kind": "knob",
      "name": "Mix",
-     "tip": "Mix: dry/wet blend.",
-     "value": "85 %",
-     "box": [
-      1041.75,
-      502.171875,
-      115.25,
-      84
-     ]
+     "tip": "Mix: dry/wet blend. Lower values keep the original punch (parallel crush).",
+     "value": "100 %",
+     "box": {
+      "x": 1704,
+      "y": 700,
+      "w": 208,
+      "h": 168
+     }
     }
-   ],
-   "img": "crusher_p4.png"
+   ]
   }
  ],
- "displays": [],
+ "displays": {},
  "top": [
   {
    "n": 1,
    "name": "Preset menu",
-   "tip": "Factory presets (our own) and your saved presets.",
-   "box": [
-    652.171875,
-    225.28125,
-    213,
-    33
-   ]
+   "tip": "Factory presets (our own). Use the arrows to step through them.",
+   "value": "Init",
+   "kind": "menu"
   },
   {
    "n": 2,
    "name": "Randomize",
-   "tip": "Set the knobs to random values (output level, mix, cuts and pan are kept).",
-   "box": [
-    873.171875,
-    224.984375,
-    97.390625,
-    33.59375
-   ]
+   "tip": "Set the controls to random values (output level and on/off switches are kept).",
+   "value": "",
+   "kind": "button"
   },
   {
    "n": 3,
-   "name": "Clipper",
-   "tip": "Soft peak clipper right before the safety limiter (always there, no knob): shaves only the tallest peaks so the limiter works less and the whole thing sits louder without harshness. Switch it off to hear the difference.",
-   "box": [
-    978.5625,
-    224.984375,
-    71.59375,
-    33.59375
-   ]
+   "name": "Nasty range",
+   "tip": "Nasty range: lets Drive, Fuzz, Squeeze, Warm and the other heavy knobs go far past 100 % for really nasty, OTT and Vengeance style sounds. Off keeps every knob at its normal top.",
+   "value": "",
+   "kind": "button"
   },
   {
    "n": 4,
    "name": "Limiter",
-   "tip": "Safety limiter on the output: keeps the level from ever passing 0 dBFS, smooth and transparent. Turn it off for the raw output.",
-   "box": [
-    1058.15625,
-    224.984375,
-    68.84375,
-    33.59375
-   ]
+   "tip": "Safety limiter on the output: keeps the level from ever passing 0 dBFS, smooth and transparent. Turn it off if you want the raw output (for example to let your own limiter do the work).",
+   "value": "",
+   "kind": "button"
   },
   {
    "n": 5,
+   "name": "Settings",
+   "tip": "Settings: version, link to the GitHub page for new versions",
+   "value": "",
+   "kind": "button"
+  },
+  {
+   "n": 6,
    "name": "Info bubbles (i)",
    "tip": "Info bubbles: hover a control for one second to see what it does. Click to turn them off or on.",
-   "box": [
-    1135,
-    226.78125,
-    30,
-    30
-   ]
+   "value": "",
+   "kind": "button"
   }
- ]
+ ],
+ "names": {
+  "10": "Distortion type"
+ }
 }

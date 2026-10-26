@@ -1,6 +1,6 @@
 {
  "crusher": {
-  "flow": "Input > Distortion > Filter > Compressor > Master (volume, dry/wet mix) > output. Each of the first three stages has its own On button. The Clipper and Limiter switches in the header act at the very end.",
+  "flow": "Input > Distortion > Filter > Compressor > Master (volume, dry/wet mix) > output. Each of the first three stages has its own On button. The Nasty range and Limiter switches in the header act at the very end (Nasty range widens the knob ranges, Limiter is a safety limiter on the output).",
   "names": {
    "8": "Distortion type",
    "12": "Filter type"
@@ -17,7 +17,7 @@
    "Compressor Amount moves threshold, ratio and make-up gain together. The make-up is automatic: a slow 400 ms RMS follower compares what went in with what comes out and keeps the loudness, with the gain rising over about 50 ms and falling over about 300 ms so it never pumps audibly by itself.",
    "Phat mode adds low-end weight before the compressor, uses a slower release and a soft ceiling: made for kicks and bass.",
    "Knob changes reach the sound within one audio buffer; smoothing never exceeds 20 ms so there is no zipper noise and no sluggish feel.",
-   "Clipper and Limiter in the header are the output safety stages: Clipper rounds peaks, Limiter stops anything passing the ceiling."
+   "The output has two safety stages: a hidden soft clipper (no knob) that shaves only the tallest peaks, then the Limiter switch in the header, which stops anything passing the ceiling. Nasty range in the header widens the knob ranges."
   ]
  },
  "fat": {
