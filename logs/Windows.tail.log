@@ -25,7 +25,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:11 (juce_add_plugin)
 
 
--- Configuring done (125.6s)
+-- Configuring done (126.9s)
 -- Generating done (0.1s)
 CMake Warning (unused-cli):
   Manually-specified variables were not used by the project:
@@ -39,8 +39,8 @@ MSBuild version 18.11.1-1.26513.3+940033be3 for .NET Framework
   Checking File Globs
   1>Checking Build System
   Generating CatCrusher_artefacts/JuceLibraryCode/CatCrusher_resources.rc
-  Building Custom Rule D:/a/catcrusher-vst/catcrusher-vst/CMakeLists.txt
   Building VST3 manifest helper for CatCrusher
+  Building Custom Rule D:/a/catcrusher-vst/catcrusher-vst/CMakeLists.txt
   CatCrusher_rc_lib.vcxproj -> D:\a\catcrusher-vst\catcrusher-vst\build\CatCrusher_rc_lib.dir\Release\CatCrusher_rc_lib.lib
   -- The CXX compiler identification is MSVC 19.51.36260.0
   -- Detecting CXX compiler ABI info
